@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocean-subgraph
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocean-subgraph
+  template:
+    metadata:
+      labels:
+        app: ocean-subgraph
+    spec:
+      containers:
+        - name: graph-node
+          image: "{{ .Values.graphNode.image }}:{{ .Values.graphNode.tag }}"
+          ports:
+            - containerPort: 8000
+            - containerPort: 8001
+            - containerPort: 8020
+            - containerPort: 8030
+            - containerPort: 8040
+          env:
+            - name: postgres_host
+              value: "{{ .Values.graphNode.postgresHost }}"
+            - name: postgres_user
+              value: "{{ .Values.graphNode.postgresUser }}"
+            - name: postgres_pass
+              value: "{{ .Values.graphNode.postgresPass }}"
+            - name: postgres_db
+              value: "{{ .Values.graphNode.postgresDb }}"
+            - name: ipfs
+              value: "{{ .Values.graphNode.ipfs }}"
+            - name: ethereum
+              value: "{{ .Values.graphNode.ethereum }}"
+            - name: RUST_LOG
+              value: "{{ .Values.graphNode.rustLog }}"
+      imagePullSecrets:
+         {{- toYaml . | nindent 8 }}
+      {{- end}}
