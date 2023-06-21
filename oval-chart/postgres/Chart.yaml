@@ -1,0 +1,5 @@
+apiVersion: v2
+name: postgres
+description: A Helm chart for deploying Zolando postgres CRD to k8s.
+type: application
+version: 0.1.0

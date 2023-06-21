@@ -1,0 +1,110 @@
+# Default values for graphprotocol-node.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: graphprotocol/graph-node
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.29.0"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  annotations: {}
+  type: ClusterIP
+  metricsPort: 8040
+  jsonRpcPort: 8020
+  graphqlPort: 8000
+  graphqlWsPort: 8001
+  indexPort: 8030
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+config:
+  ipfs: "ipfs:5001"
+  chains: {}
+    mumbai:
+       providers:
+      - label: mumbai
+        transport: https://polygon-mumbai-bor.publicnode.com	
+        url: https://polygon-mumbai-bor.publicnode.com	
+        features: [ archive ]
+        headers: {"Authorization": "Bearer foo"}
+
+postgres:
+  db: "graph-node"
+  host: "postgres"
+  replicaHost: "postgres"
+  user: "graph-node"
+  password:
+    value: "let-me-in"
+    # fromSecret:
+    #   name:
+    #   key:
+
+# Shouldn't have - sign, cause it would be replaced with _
+blockIngestorNodeId: index_node
+
+# Possible values: query-node, index-node
+role: "query-node"
+
+monitoring:
+  enabled: false
+
+ingress:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+     - host: graph.dev.oval.pepro.io
+  tls: []
+  #  - secretName: chart-example-tls
+      hosts:
+        - graph.dev.oval.pepro.io
+
+ingressWebsocket:
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+     - host: graph.dev.oval.pepro.io
+  tls: []
+  #  - secretName: chart-example-tls
+      hosts:
+        - graph.dev.oval.io
