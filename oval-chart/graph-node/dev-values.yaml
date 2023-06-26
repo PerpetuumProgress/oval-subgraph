@@ -58,8 +58,8 @@ config:
   ipfs: "ipfs:5001"
   chains: 
     mumbai:
-       providers:
-      - label: mumbai
+      providers:
+        label: mumbai
         transport: https://polygon-mumbai-bor.publicnode.com	
         url: https://polygon-mumbai-bor.publicnode.com	
         features: [ archive ]
@@ -92,7 +92,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
      - host: graph.dev.oval.pepro.io
-  tls: []
+  tls: 
   #  - secretName: chart-example-tls
       hosts:
         - graph.dev.oval.pepro.io
@@ -104,7 +104,7 @@ ingressWebsocket:
     # kubernetes.io/tls-acme: "true"
   hosts:
      - host: graph.dev.oval.pepro.io
-  tls: []
+  tls: 
   #  - secretName: chart-example-tls
       hosts:
         - graph.dev.oval.io
