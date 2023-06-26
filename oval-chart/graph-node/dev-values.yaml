@@ -56,7 +56,7 @@ affinity: {}
 
 config:
   ipfs: "ipfs:5001"
-  chains: {}
+  chains: 
     mumbai:
        providers:
       - label: mumbai
