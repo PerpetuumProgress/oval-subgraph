@@ -10,8 +10,8 @@ then
   while [ ! -f "/ocean-contracts/artifacts/ready" ]; do
     sleep 2
   done
-  export ADDRESS_FILE="/ocean-contracts/artifacts/address.json"
+  export ADDRESS_FILE="/ocean-contracts/address.json"
   cd /usr/src/app/
-  npm run quickstart:barge
+  npm run quickstart:mumbai
 fi
 tail -f /dev/null
