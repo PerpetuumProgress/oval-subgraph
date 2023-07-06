@@ -48,6 +48,6 @@ jobs:
         uses: WyriHaximus/github-action-helm3@v2
         with:
           exec: helm upgrade dev-subgraph-oval ./oval-chart/graph-node --install --wait --atomic --namespace=dev-oval --set=app.name=dev_subgraph_oval --values=./oval-chart/graph-node/dev-values.yaml &&
-          helm upgrade dev-postgres-oval ./oval-chart/postgres --install --wait --atomic --namespace=dev-oval --set=app.name=dev_postgres_oval --values=./oval-chart/postgres/dev-values.yaml &&
-	  helm upgrade dev-ipfs-oval ./oval-chart/ipfs --install --wait --atomic --namespace=dev-oval --set=app.name=dev_ipfs_oval --values=./oval-chart/ipfs/dev-values.yaml 
+          exec: helm upgrade dev-postgres-oval ./oval-chart/postgres --install --wait --atomic --namespace=dev-oval --set=app.name=dev_postgres_oval --values=./oval-chart/postgres/dev-values.yaml &&
+	  exec: helm upgrade dev-ipfs-oval ./oval-chart/ipfs --install --wait --atomic --namespace=dev-oval --set=app.name=dev_ipfs_oval --values=./oval-chart/ipfs/dev-values.yaml 
           kubeconfig: '${{ secrets.DEV_KUBECONFIG }}'
