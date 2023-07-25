@@ -59,9 +59,9 @@ config:
   chains: 
     mumbai:
       providers:
-        label: mumbai
-        transport: https://polygon-mumbai-bor.publicnode.com	
-        url: https://polygon-mumbai-bor.publicnode.com	
+        label: Goerli
+        transport: https://rpc.goerli.eth.gateway.fm	
+        url: https://rpc.goerli.eth.gateway.fm	
         features: [ archive ]
         headers: {"Authorization": "Bearer foo"}
 
