@@ -21,7 +21,7 @@
   [chains.{{ $name }}]
     shard = "primary"
     {{- range $conf.providers }}
-    [[chains.{{ $name }}.provider]]
+    [[chains.{{ $name }}.providers]]
       label = {{ .label | quote }}
       url = {{ .url | quote }}
       features = {{ toJson .features }}
