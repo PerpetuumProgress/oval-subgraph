@@ -19,8 +19,8 @@ image:
       value: "graph-node"
     - name: "IPFS"
       value: "ipfs:5001"
-    - name: "ETHEREUM"
-      value: "mumbai:https://polygon-mumbai-bor.publicnode.com"
+    - name: "Goerli"
+      value: "https://rpc.goerli.eth.gateway.fm"
     - name: "RUST_LOG"
       value: "INFO"
     # Overrides the image tag whose default is the chart appVersion.
