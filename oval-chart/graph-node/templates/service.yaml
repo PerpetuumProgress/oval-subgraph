@@ -7,9 +7,27 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      #   targetPort: http
+    - port: {{ .Values.service.metricsPort }}
+      targetPort: metrics
       protocol: TCP
-      name: http
+      name: metrics
+    - port: {{ .Values.service.jsonRpcPort }}
+      targetPort: json-rpc
+      protocol: TCP
+      name: json-rpc
+    - port: {{ .Values.service.graphqlPort }}
+      targetPort: graphql
+      protocol: TCP
+      name: graphql
+    - port: {{ .Values.service.graphqlWsPort }}
+      targetPort: graphql-ws
+      protocol: TCP
+      name: graphql-ws
+    {{- if eq .Values.role "index-node" }}
+    - port: {{ .Values.service.indexPort }}
+      targetPort: index
+      protocol: TCP
+      name: index
+    {{- end }}
   selector:
     {{- include "oval-chart.selectorLabels" . | nindent 4 }}
