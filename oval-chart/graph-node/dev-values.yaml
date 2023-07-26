@@ -44,6 +44,7 @@ service:
   graphqlPort: 8000
   graphqlWsPort: 8001
   indexPort: 8030
+  port: 9000
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
