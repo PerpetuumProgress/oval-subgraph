@@ -117,3 +117,10 @@ ingressWebsocket:
   #  - secretName: chart-example-tls
       hosts:
         - graph.dev.oval.io
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
